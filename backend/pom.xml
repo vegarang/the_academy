@@ -8,8 +8,8 @@
   
   
   <name>Screenshot</name>
-  <url>http://maven.apache.org</url>
   <dependencies>
+<!-- Test dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
