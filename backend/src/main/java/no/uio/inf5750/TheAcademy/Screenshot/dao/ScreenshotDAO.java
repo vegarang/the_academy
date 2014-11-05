@@ -17,7 +17,7 @@ public interface ScreenshotDAO {
 	 * @param screen
 	 * @return Id of the screenshot
 	 */
-	String addScreenshot(String userId, Screenshot screen);
+	String addScreenshot(Screenshot screen);
 	/**
 	 * Get the screenshot from database
 	 * @param screenshotId
@@ -35,4 +35,5 @@ public interface ScreenshotDAO {
 	 * @param screenshotId
 	 */
 	void deleteScreenshot(String screenshotId);
+	
 }
