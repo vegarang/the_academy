@@ -9,6 +9,12 @@ public class ScreenshotImpl implements Screenshot {
 	private String canvas;
 	private String title;
 
+	public ScreenshotImpl(String userId, String canvas, String url) {
+		this.userId = userId;
+		this.canvas = canvas;
+		this.url = url;
+	}
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -35,6 +41,26 @@ public class ScreenshotImpl implements Screenshot {
 
 	public String getTitle() {
 		return title;
+	}
+	public Screenshot withUserId(String userId){
+		this.userId = userId;
+		return this;
+	}
+	public Screenshot withUrl(String url){
+		this.url = url;
+		return this;
+	}
+	public Screenshot withComment(String comment) {
+		this.comment = comment;
+		return this;
+	}
+	public Screenshot withTitle(String title){
+		this.title = title;
+		return this;
+	}
+	public Screenshot withCanvas(String canvas){
+		this.canvas = canvas;
+		return this;
 	}
 
 }
