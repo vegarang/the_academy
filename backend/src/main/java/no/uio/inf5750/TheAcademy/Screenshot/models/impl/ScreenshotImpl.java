@@ -6,12 +6,12 @@ public class ScreenshotImpl implements Screenshot {
 	private String userId;
 	private String comment;
 	private String url;
-	private String canvas;
+	private String imageurl;
 	private String title;
 
-	public ScreenshotImpl(String userId, String canvas, String url) {
+	public ScreenshotImpl(String userId, String imageurl, String url) {
 		this.userId = userId;
-		this.canvas = canvas;
+		this.imageurl = imageurl;
 		this.url = url;
 	}
 	
@@ -35,8 +35,8 @@ public class ScreenshotImpl implements Screenshot {
 		return url;
 	}
 
-	public String getCanvas() {
-		return canvas;
+	public String getImageURL() {
+		return imageurl;
 	}
 
 	public String getTitle() {
@@ -58,8 +58,8 @@ public class ScreenshotImpl implements Screenshot {
 		this.title = title;
 		return this;
 	}
-	public Screenshot withCanvas(String canvas){
-		this.canvas = canvas;
+	public Screenshot withImageURL(String imageURL){
+		this.imageurl = imageURL;
 		return this;
 	}
 

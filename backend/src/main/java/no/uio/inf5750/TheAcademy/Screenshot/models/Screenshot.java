@@ -30,7 +30,7 @@ public interface Screenshot {
 	 * Get the HTML canvas we save
 	 * @return the canvas
 	 */
-	public String getCanvas();
+	public String getImageURL();
 	/**
 	 *  Get title
 	 * @return

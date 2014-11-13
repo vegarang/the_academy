@@ -9,7 +9,7 @@ import no.uio.inf5750.TheAcademy.Screenshot.dao.ScreenshotDAO;
 import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
 
 /**
- * @author mats
+ * @author matsasc 	
  *
  */
 public class ScreenshotDAOImpl implements ScreenshotDAO {
