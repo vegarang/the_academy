@@ -5,6 +5,11 @@
 	<artifactId>no.uio.ifi.inf5750.TheAcademy.Screenshot</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
+	
+	<properties>
+		<spring.version>3.0.2.RELEASE</spring.version>
+		<hibernate.version>4.3.7.Final</hibernate.version>
+	</properties>
 
 
 	<name>Screenshot</name>
@@ -20,8 +25,35 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.7.Final</version>
+			<version>${hibernate.version}</version>
+		</dependency>
+	<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>}
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 	</dependencies>
+	
 </project>
