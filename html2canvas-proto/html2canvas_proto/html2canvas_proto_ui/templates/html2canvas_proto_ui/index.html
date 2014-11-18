@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="html2canvas_proto">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html2canvas-test</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static "html2canvas_proto_ui/lib/bootstrap-3.2.0-dist/css/bootstrap.min.css"%}">
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/html2canvas.js" %}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular.min.js"%}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular-resource.min.js"%}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"%}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js"%}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js"%}"></script>
+</head>
+<body ng-controller="TestCtrl">
+    {% verbatim body %}
+    <div class="jumbotron">
+        <h1>Some testypage</h1>
+        <span><small> - Because everyone needs to test stuff every once in a while, right?</small></span>
+    </div>
+
+    <button class="btn btn-primary" ng-click="store_image()">Take screenshot</button>
+    {% endverbatim body %}
+</body>
+</html>
