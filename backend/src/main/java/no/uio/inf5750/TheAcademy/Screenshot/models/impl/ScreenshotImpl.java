@@ -6,12 +6,12 @@ public class ScreenshotImpl implements Screenshot {
 	private String userId;
 	private String comment;
 	private String url;
-	private String imageurl;
+	private String fileLocation;
 	private String title;
 
-	public ScreenshotImpl(String userId, String imageurl, String url) {
+	public ScreenshotImpl(String userId, String filelocation, String url) {
 		this.userId = userId;
-		this.imageurl = imageurl;
+		this.fileLocation = filelocation;
 		this.url = url;
 	}
 	
@@ -36,7 +36,7 @@ public class ScreenshotImpl implements Screenshot {
 	}
 
 	public String getImageURL() {
-		return imageurl;
+		return fileLocation;
 	}
 
 	public String getTitle() {
@@ -58,9 +58,13 @@ public class ScreenshotImpl implements Screenshot {
 		this.title = title;
 		return this;
 	}
-	public Screenshot withImageURL(String imageURL){
-		this.imageurl = imageURL;
+	public Screenshot withFilelocation(String fileLocation){
+		this.fileLocation = fileLocation;
 		return this;
+	}
+
+	public String getImageLocation() {
+		return fileLocation;
 	}
 
 }
