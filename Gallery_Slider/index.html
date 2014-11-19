@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="http://code.angularjs.org/1.2.9/angular.min.js" type="text/javascript"></script>
 <script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='css/app.css' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/app.js"></script>
@@ -22,18 +23,20 @@ body {
 }
 </style>
 <h1>Screenshot Gallery</h1>
+
 <body ng-controller="SliderController">
+<div class="row">
+        <div class="imgbox"><div class="img"><div class="text"></div></div></div>
+        <div class="imgbox"><div class="img"><div class="text"></div></div></div>
+        <div class="imgbox"><div class="img"><div class="text"></div></div></div>
+        <div class="imgbox"><div class="img"><div class="text"></div></div></div>
+</div>
 <ul class ="position">
 <div class="imagegallery">
 <div class="inner">
-<slider images="images"/>
-
 </div>
 </div>
 </body>
-<ul class="phone-thumbs">
-</li>
-</ul>
 <li ng-repeat="img in phone.images">
 <img ng-src="{{img}}">
 <img ng-src="{{img}}" ng-click="setImage(img)">

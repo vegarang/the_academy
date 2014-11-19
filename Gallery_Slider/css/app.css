@@ -135,3 +135,20 @@ p.one {
   border-width:  5px;
 
 }
+
+.imgbox{
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    position: center; 
+    
+}
+
+
+.img{
+    height: 200px;
+    width: 200px;
+    background-color: black;
+    position: right;
+
+}

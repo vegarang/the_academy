@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="http://code.angularjs.org/1.2.9/angular.min.js" type="text/javascript"></script>
+<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='css/app.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/app.js"></script>
+
+<title>Gallery App</title>
+
+</head>
+<center> 
+<h1>Screenshot Gallery</h1>
+</center>
+<body>
+<style> 
+body {
+    background-image: url("imag/screenshots/silver.jpg"); 
+}
+
+.imgbox{
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    position: center;
+    
+}
+
+.img{
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    position: center; 
+}
+
+
+#imgboks{
+
+width: 804px;
+height: 100px
+position:relative;
+
+}
+
+
+#imgboks img {
+
+width: 500px;
+height: 70px;
+position:absolute;
+bottom: 0px;
+left: 152px;
+}
+
+
+
+</style>
+
+<body ng-controller="SliderController">
+<slider images="images"/>
+<center> 
+<div class="grid" ng-controller = "PhotosCtrl">
+        <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+        <center>
+
+</div>
+
+
+<div class = "imgbox" ng-repeat = "image in images"> IMAGE <div class="text"></div>
+
+    <img ng-src = "{{photo.src}}">
+
+</div>
+</center>
+
+<center>
+
+
+    <div class="imgboks"><img src="img/dv3.png"/><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+</center>
+
+<center>
+
+
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+</center>
+
+
+<center>
+
+
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+</center>
+
+</body>
+
+<script>
+
+var PhotosCtrl = function ($scope) {
+
+    $scope.photos = [
+    {src:'dv3.png',title:'Pic 1'},{src:'gis4.png',title:'Pic 2'},{src:'gis5.png'} 
+    ];
+
+}
+
+</script>
+
+</html>
+
+
