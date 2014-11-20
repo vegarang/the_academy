@@ -35,10 +35,24 @@ sliderApp.directive('slider', function ($timeout) {
   }
 });
 
-var PhotosCtrl = function ($scope) {
 
-	$scope.photos = [
+var ImageCtrl = function ($scope) {
+
+    $scope.image = [
     {src:'dv3.png',title:'Pic 1'},{src:'gis4.png',title:'Pic 2'},{src:'gis5.png'} 
-	];
+    ]; //henter bilder fra 
 
 }
+
+angular.module('Image.slides').controller('ImageCarousel', function($.scope)) {
+var images = $scope.images = [];
+$scope.addSlide = function() {
+	slides.push({
+	image: 
+	});
+}
+
+
+}
+
+
