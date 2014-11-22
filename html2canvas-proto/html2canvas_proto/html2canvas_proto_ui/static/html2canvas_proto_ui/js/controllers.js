@@ -2,25 +2,6 @@ angular.module('html2canvas_proto.controllers', [])
 
 .controller('TestCtrl', function($scope, ImageAsTextFactory) {
 
-//        $scope.init = function() {
-//            console.log('initialized controller!');
-//
-//            console.log('attempting to screenshot!');
-//
-//            $document.ready(function() {
-//                html2canvas(document.body, {
-//                    onrendered: function(canvas) {
-//                        console.log("Got response!");
-//                        $scope.canvaselement = canvas.toDataURL();
-//                        console.log(canvas);
-//                        document.body.appendChild(canvas);
-//                        console.log("Stuff:");
-//                        console.log(canvas.toDataURL("image/png"));
-//                    }
-//                });
-//            });
-//        };
-
         $scope.store_image = function() {
             html2canvas(document.body, {
                 onrendered: function(canvas) {
@@ -31,5 +12,91 @@ angular.module('html2canvas_proto.controllers', [])
             });
         };
 
+        $scope.range = function(num) {
+            return new Array(num);
+        };
+
 //        $scope.init();
-    });
+    })
+
+.controller('SliderController', function($scope) {
+    $scope.images=[
+        {
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/dv3.png',
+            title:'Pic 1'
+        },{
+            src:'img/gis4.png',
+            title:'Pic 2'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        },{
+            src:'img/gis5.png',
+            title: 'Pic 3'
+        }
+    ];
+
+    $scope.showAlert = function(imagetitle) {
+        alert("You clicked image "+ imagetitle);
+    }
+});

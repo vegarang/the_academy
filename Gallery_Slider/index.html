@@ -121,8 +121,9 @@ Sort by:
 </center>
 <div ng-controller = "ImageModal"><img ng-src = "{{image.src}}" style ="margin:auto;">
 <li ng-repeat ="Image in images">
-<a ng-click="selected.image = image">
-<button class="imageclick" ng-click="close()">
+    <!--<a ng-click="selected.image = image">-->
+    <div class="imgbox"><div class="img">IMAGE HERE<div class="text"></div></div></div>
+    <!--<button class="imageclick" ng-click="close()">-->
 </ul>
 </body>
 </html>
