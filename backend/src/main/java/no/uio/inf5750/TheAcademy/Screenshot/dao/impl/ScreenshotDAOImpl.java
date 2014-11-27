@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import no.uio.inf5750.TheAcademy.Screenshot.dao.ScreenshotDAO;
 import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
@@ -22,6 +23,7 @@ import no.uio.inf5750.TheAcademy.Screenshot.models.impl.ScreenshotImpl;
 @Transactional
 public class ScreenshotDAOImpl implements ScreenshotDAO {
 	SessionFactory sessionFactory;
+	String screenshotLocation;
 	
 	public void setSessionFactory(SessionFactory sessionFactory){
 		this.sessionFactory = sessionFactory;
@@ -62,5 +64,6 @@ public class ScreenshotDAOImpl implements ScreenshotDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(screenshot);
 	}
+	
 
 }
