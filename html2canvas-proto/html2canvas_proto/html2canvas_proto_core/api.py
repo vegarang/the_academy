@@ -15,6 +15,8 @@ class CanvasTestSerializer(serializers.ModelSerializer):
         model = models.CanvasTest
         fields = (
             'image',
+            'title',
+            'description'
         )
 
 
