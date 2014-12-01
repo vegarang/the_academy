@@ -1,4 +1,4 @@
-angular.module('sliderApp.controllers', [])
+angular.module('sliderApp.controllers', 'ngAnimate',[])
 
 .controller('SliderController', function($scope) {
     $scope.images=[
@@ -77,10 +77,16 @@ angular.module('sliderApp.controllers', [])
         }
     ];
 
-    $scope.showAlert = function(image) {
+$scope.showAlert = function(image) {
         alert("You clicked image "+ image.title); // I want to be a modal when I grow up.. Can you help me?
         /*
             This is where image.active should be set to true, and a modal (with a carousel) should be opened.
+            image.active = true;
          */
     }
+
+    
 });
+
+
+

@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="sliderApp">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <script src="http://code.angularjs.org/1.2.9/angular.min.js" type="text/javascript"></script>
@@ -14,7 +13,7 @@
 
     <style type="text/css">
         body {
-            background-image: url("/img/silver.jpg");
+            background-image: url("/img/gradientbg.png");
         }
 
         .imgbox {
@@ -47,33 +46,59 @@
             height: 200px;
             width: 200px;
             margin: 0 auto;
+            color: white;
         }
+
+        h1 {
+
+            color: white;
+        }
+
+        a {
+
+          color: white;
+
+        }
+
 
     </style>
 </head>
+<body> 
 
-<body ng-controller="SliderController">
+<div ng-controller="SliderController">
     <h1>Screenshot Gallery</h1>
-    
-    <ul class = "position">
-    <li>
-    Search:<input ng-model="query">
-    Sort by:<select ng-model="orderProp">
+
+<div> 
+    <ul class = "position"> 
+    <a>Search: </a><input ng-model="query">
+    <a>Sort by: </a><select ng-model="orderProp">
     <option value="name">Alphabetical</option>
     <option value="-age">Oldest</option>
     </select>
-    </li>
+    
     </ul>
+
+</div>
+
     <ul class="gallery">
         <li ng-repeat="image in images">
             <!--<div class="imgbox">-->
             <!--</div>-->
-            <a ng-click="showAlert(image)"><img class="img" ng-src="{{image.src}}" alt="{{image.title}}"></a>
+            <button class="btn" ng-click="selected.image = image"><img class="img" ng-src="{{image.src}}" alt="{{image.title}}"></button>
         </li>
+
     </ul>
+</div>
+
+
+<div ng-controller ="ImgCtrl">
+
+    <p> Image here</p>
+
+</div>
+
 
 </body>
-
 </html>
 
 
