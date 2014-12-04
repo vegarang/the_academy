@@ -3,6 +3,7 @@ package no.uio.inf5750.TheAcademy.Screenshot.models.impl;
 import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
 
 public class ScreenshotImpl implements Screenshot {
+	private int id;
 	private String userId;
 	private String comment;
 	private String url;

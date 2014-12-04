@@ -1,16 +1,16 @@
 package no.uio.inf5750.TheAcademy.Screenshot.dao;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.springframework.util.Base64Utils;
 
 import no.uio.inf5750.TheAcademy.Screenshot.PropertiesHandler;
+
+import org.springframework.util.Base64Utils;
 
 public class ImageSaver {
 	
@@ -19,11 +19,11 @@ public class ImageSaver {
 	 * @param user the user the image belongs too
 	 * @param base64encodedImage the encoded image
 	 * @param screenshotProperties the properties for the screenshot application
-	 * @return filename wher the image is saved
+	 * @return filename where the image is saved
 	 * @throws IOException 
 	 */
-	public static String saveImage(String user, String base64encodedImage, Properties screenshotProperties) throws IOException{
-		String fileLocation = screenshotProperties.getProperty("screenshot.path");
+	public static String saveImage(String user, String base64encodedImage) throws IOException{
+		String fileLocation = PropertiesHandler.getProperties("screenshot").getProperty("screenshot.path");
 		File dir = new File(fileLocation);
 		if(!dir.exists()){
 			dir.mkdirs();
@@ -40,7 +40,16 @@ public class ImageSaver {
 	private static String cleanUpImage(String base64encImg){
 		return base64encImg.split(",")[1];
 	}
-	
+	public byte[] getImage(String name) throws IOException{
+		File dir = new File(PropertiesHandler.getProperties("screenshot").getProperty("screenshot.path"));
+		File image = new File(dir, name);
+		InputStream imageStream = new FileInputStream(image);
+		byte[] ret = new byte[(int)image.length()];
+		DataInputStream dataStream = new DataInputStream(imageStream);
+		dataStream.readFully(ret);
+		dataStream.close();
+		return ret;
+	}
 	
 
 }
