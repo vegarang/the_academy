@@ -85,14 +85,17 @@
 
     <script type="text/ng-template" id ="imageslide.html">
         <div class="modal-header">
-            <h3 class="modal-title">{{image.title}}</h3>
+            <h3 class="modal-title">{{images[cur_index].title}}</h3>
+            <small>{{images[cur_index].username}} - {{images[cur_index].date}} - {{images[cur_index].url}}</small>
         </div>
         <div class="modal-body">
-        <img ng-src="{{image.src}}" alt="{{image.title}}" width =100%>
-            
+            <img ng-src="{{images[cur_index].src}}" alt="{{images[cur_index].title}}" width=100%>
+
+            <p>{{images[cur_index].description}}</p>
         </div>
         <div class="modal-footer">
-
+            <button class="btn btn-small" ng-click="previous()">Previous</button>
+            <button class="btn btn-small" ng-click="next()">Next</button>
             <button class="btn btn-warning" ng-click="cancel()">Close</button>
         </div>
     </script>
