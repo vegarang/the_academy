@@ -103,16 +103,23 @@
     <hr>
     <h1>Screenshot Gallery</h1>
 
-    <div>
-        <ul class="position">
-            <a>Search: </a><input ng-model="query">
-            <a>Sort by: </a><select ng-model="orderProp">
-            <option value="name">Alphabetical</option>
-            <option value="-age">Oldest</option>
-
-        </select>
-        </ul>
+    <!--<ul class="position">-->
+    <div class="position" style="margin-left: 5%">
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <label for="search">Search: </label>
+                <input ng-model="query" id="search" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="sort_by">Sort by: </label>
+                <select ng-model="orderProp" id="sort_by" class="form-control">
+                    <option value="name">Alphabetical</option>
+                    <option value="-age">Oldest</option>
+                </select>
+            </div>
+        </form>
     </div>
+    <!--</ul>-->
     <ul class="gallery">
         <li ng-repeat="image in images track by $index">
             <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.src}}" alt="{{image.title}}"></a>
@@ -121,7 +128,7 @@
             <!--</div>-->
 
         </li>
-    </ul>
+        </ul>
 </div>
 </body>
 </html>
