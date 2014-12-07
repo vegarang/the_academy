@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
+import no.uio.inf5750.TheAcademy.Screenshot.models.impl.ScreenshotImpl;
 
 /**
  * DAO interface
@@ -29,7 +30,7 @@ public interface ScreenshotDAO {
 	 * @param userId
 	 * @return Collection of screenshots
 	 */
-	Collection<Screenshot> getScreenshots(String userId);
+	List<ScreenshotImpl> getScreenshots(String userId);
 	/**
 	 * Delete the screenshot
 	 * @param screenshotId

@@ -40,7 +40,7 @@ public class ImageSaver {
 	private static String cleanUpImage(String base64encImg){
 		return base64encImg.split(",")[1];
 	}
-	public byte[] getImage(String name) throws IOException{
+	public static byte[] getImage(String name) throws IOException{
 		File dir = new File(PropertiesHandler.getProperties("screenshot").getProperty("screenshot.path"));
 		File image = new File(dir, name);
 		InputStream imageStream = new FileInputStream(image);
