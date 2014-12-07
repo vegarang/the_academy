@@ -34,7 +34,7 @@ angular.module('html2canvas_proto.controllers', [])
                 {
                     templateUrl: 'title_and_description_modal.html',
                     controller: 'TitleDescriptionModalCtrl',
-                    size: 'sm'
+                    size: 'lg'
                 }
             ).result.then(
                 function(image_meta) {

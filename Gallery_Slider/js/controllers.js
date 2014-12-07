@@ -97,10 +97,12 @@ angular.module('sliderApp.controllers',[])
 
 .controller('ImgCtrl',function($scope,$modalInstance,image) {
 
+
     $scope.image = image;
     
     $scope.cancel = function() {
         $modalInstance.close()
+
     }
 
 });

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.ifi.uio.no.inf5750.TheAcademy</groupId>
-	<artifactId>no.uio.ifi.inf5750.TheAcademy.Screenshot</artifactId>
+	<artifactId>Screenshot-Service</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 
@@ -29,6 +29,26 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>geronimo-spec</groupId>
+			<artifactId>geronimo-spec-jta</artifactId>
+			<version>1.0-M1</version>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.2.136</version>
 		</dependency>
 		<!-- Spring dependencies -->
 		<dependency>
@@ -61,6 +81,11 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version} </version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<!-- Jackson depencies -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -84,7 +109,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
@@ -111,18 +136,10 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<configuration>
-					<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin> -->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 
 	</build>
 

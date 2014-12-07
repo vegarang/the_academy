@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="no.uio.inf5750.TheAcademy.Screenshot.models.impl.ScreenshotImpl" table="screenshots">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+		<property name="userId" column="userdd" not-null="true" />
+		<property name="fileLocation" column="location" not-null="true" />
+		<property name="comment" column="comment"/>
+		<property name="title" column="title"/>
+		<property name="url" column="url"/>
+		<property name="taken" column="created"/>
+		
+	</class>
+</hibernate-mapping> 

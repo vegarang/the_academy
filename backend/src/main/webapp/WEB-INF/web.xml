@@ -27,7 +27,7 @@
          
     <servlet-mapping>
         <servlet-name>Screenshot</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
  
 </web-app>
