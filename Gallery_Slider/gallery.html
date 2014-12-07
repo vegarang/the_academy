@@ -66,11 +66,6 @@
         }
 
 
-        b {
-
-            color: white;
-
-        }
         
         img:hover {
             outline: 3px solid white;
@@ -111,16 +106,6 @@
     <hr>
     <h1>Screenshot Gallery</h1>
 
-     <div>
-        <ul class="position">
-            <b>Search:</b><input ng-model="query">
-            <b>Sort by:</b><select ng-model="orderProp">
-            <option value="name">Alphabetical</option>
-            <option value="-age">Oldest</option>
-
-        </select>
-        </ul>
-
     <!--<ul class="position">-->
     <div class="position" style="margin-left: 5%">
         <form role="form" class="form-inline">
@@ -137,16 +122,6 @@
             </div>
         </form>
 
-    <div>
-        <ul class="position">
-            <b>Search:</b><input ng-model="query">
-            <b>Sort by:</b><select ng-model="orderProp">
-            <option value="name">Alphabetical</option>
-            <option value="-age">Oldest</option>
-
-        </select>
-        </ul>
-    </div>
     <ul class="gallery">
         <li ng-repeat="image in images track by $index">
             <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.src}}"alt="{{image.title}}"></a>
