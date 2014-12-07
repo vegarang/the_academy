@@ -2,7 +2,6 @@
 <html ng-app="sliderApp">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +38,7 @@
             margin-right: 100px;
             margin-bottom: 50px;
             left: 152px;
-            border: 1px solid #fff;
+            
 
         }
 
@@ -56,13 +55,23 @@
 
             color: white;
         }
+        h4 {
+            color:white;
+        }
 
-        a {
+        p {
 
             color: white;
 
         }
 
+
+        b {
+
+            color: white;
+
+        }
+        
         img:hover {
             outline: 3px solid white;
         }
@@ -82,8 +91,7 @@
 </head>
 <body>
 <div ng-controller="SliderController">
-
-    <script type="text/ng-template" id="imageslide.html">
+ <script type="text/ng-template" id="imageslide.html">
         <div class="modal-header">
             <h3 class="modal-title">{{images[cur_index].title}}</h3>
             <small>{{images[cur_index].username}} - {{images[cur_index].date}} - {{images[cur_index].url}}</small>
@@ -105,8 +113,8 @@
 
     <div>
         <ul class="position">
-            <a>Search: </a><input ng-model="query">
-            <a>Sort by: </a><select ng-model="orderProp">
+            <b>Search:</b><input ng-model="query">
+            <b>Sort by:</b><select ng-model="orderProp">
             <option value="name">Alphabetical</option>
             <option value="-age">Oldest</option>
 
@@ -115,7 +123,10 @@
     </div>
     <ul class="gallery">
         <li ng-repeat="image in images track by $index">
-            <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.src}}" alt="{{image.title}}"></a>
+            <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.src}}"alt="{{image.title}}"></a>
+            <p>{{image.description}}</p>
+            <p>Username:{{image.username}}</p>
+            <p>Date: {{image.date}}</p>
 
             <!--<div class="imgbox"> |filter:query-->
             <!--</div>-->

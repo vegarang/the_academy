@@ -42,6 +42,89 @@ angular.module('sliderApp.controllers', [])
                 date: '2014-01-01',
                 username: 'batman'
             }
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Pic 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+
         ];
     })
 
