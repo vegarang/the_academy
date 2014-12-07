@@ -1,5 +1,23 @@
+angular.module('sliderApp.controllers',[])
+.controller('SliderController', function($scope,$modal) {
+    
+    $scope.open = function(image,index) {
 
-angular.module('sliderApp.controllers', 'ngAnimate',[]).controller('SliderController', function($scope) {
+        $modal.open({
+            templateUrl:'imageslide.html',
+            controller: 'ImgCtrl',
+            resolve: {
+                image: function () {
+                    return $scope.images[index];
+                }
+            }
+        }).result.then(function(){
+            console.log("modal closed..");
+        }, function() {
+            console.log("modal dismissed");
+        });
+    }
+    
     $scope.images=[
         {
             src:'img/dv3.png',
@@ -75,30 +93,32 @@ angular.module('sliderApp.controllers', 'ngAnimate',[]).controller('SliderContro
             active: false
         }
     ];
+})
 
+.controller('ImgCtrl',function($scope,$modalInstance,image) {
 
-      $scope.open = function (size) {
-      var modalInstance = $modal.open({
-      templateUrl: 'imageslide.html',
-      controller: 'ImgCtrl',
-      image.active = true,
-      size: size,
-      resolve: {
-        items: function () {
-          return $scope.images;
-        }
-      }
-    });
-
+    $scope.image = image;
+    
+    $scope.cancel = function() {
+        $modalInstance.close()
     }
+
 });
 
 
-
-
-
-
-
-
-
+// angular.module('ui.bootstrap.demo').controller('CarouselDemoCtrl', function ($scope) {
+//   $scope.myInterval = 0;
+//   var slides = $scope.slides = [];
+//   $scope.addSlide = function() {
+//     var newWidth = 600 + slides.length + 1;
+//     slides.push({
+//       image: 'http://placekitten.com/' + newWidth + '/300',
+   
+//     });
+//   };
+//   for (var i=0; i<4; i++) {
+//     $scope.addSlide();
+//   }
+// });
+// ;
 
