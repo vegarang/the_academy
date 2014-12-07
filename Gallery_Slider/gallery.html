@@ -66,13 +66,27 @@
         outline: 3px solid white;
         } 
 
+        hr { 
+      display: block;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: auto;
+      margin-right: auto;
+      border-style: inset;
+      border-width: 1px;
+      background-color: white;
+    } 
+
+
 
     </style>
 </head>
 <body> 
 
 <div ng-controller="SliderController">
+    <hr>
     <h1>Screenshot Gallery</h1>
+    
 
 <div> 
     <ul class = "position"> 
@@ -96,15 +110,15 @@
     </ul>
 </div>
 
-
 <div ng-controller ="ImgCtrl">
 
-    <p> Image here</p>
+<p> Image here</p>
 
 </div>
 
 
 </body>
+
 </html>
 
 
