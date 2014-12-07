@@ -81,7 +81,7 @@ angular.module('sliderApp.controllers', 'ngAnimate',[]).controller('SliderContro
       var modalInstance = $modal.open({
       templateUrl: 'imageslide.html',
       controller: 'ImgCtrl',
-      image.active = true,
+      image.active: true,
       size: size,
       resolve: {
         items: function () {
