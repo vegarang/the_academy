@@ -1,6 +1,7 @@
 package no.uio.inf5750.TheAcademy.Screenshot.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,7 +27,7 @@ public class ScreenshotController {
 	public String addScreenshot(@RequestBody ScreenshotResource resource){
 		Screenshot screenshot;
 		try {
-			screenshot = new ScreenshotImpl(resource.getUser(), ImageSaver.saveImage(resource.getUser(), resource.getImage()), resource.getUrl());
+			screenshot = new ScreenshotImpl(resource.getUserName(), ImageSaver.saveImage(resource.getUserName(), resource.getImage()), resource.getUrl());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			return "Failed";
@@ -47,9 +48,13 @@ public class ScreenshotController {
 	}
 		
 	
-	@RequestMapping(value="/api/Screenshot/",method= RequestMethod.GET)
-	public List<ScreenshotImpl> fun(@RequestBody ScreenshotResource request){
-		return dao.getScreenshots(request.getUser());
+	@RequestMapping(value="/api/Screenshot/all/{id}",method= RequestMethod.GET)
+	public List<ScreenshotResource> fun(@PathVariable("id")String request){
+		ArrayList<ScreenshotResource> ret = new ArrayList<ScreenshotResource>();
+		for(Screenshot screen : dao.getScreenshots(request)){
+			ret.add(getMapper(screen));
+		}
+		return ret;
 	}
 	
 	@RequestMapping(value="api/Screenshot/image/{imageid}" , method = RequestMethod.GET)
@@ -64,7 +69,7 @@ public class ScreenshotController {
 	private ScreenshotResource getMapper(Screenshot screen){
 		ScreenshotResource ret = new ScreenshotResource();
 		ret.setCreated(screen.getCreated());
-		ret.setUser(screen.getUserId());
+		ret.setUserName(screen.getUserId());
 		ret.setImage("api/Screenshot/image/" + screen.getId());
 		if(screen.getComment() != null){
 			ret.setDescription(screen.getComment());
