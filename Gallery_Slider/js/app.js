@@ -1,3 +1,1 @@
-angular.module('sliderApp',['ngAnimate', 'sliderApp.controllers'])
-
-;
+angular.module('sliderApp',['ui.bootstrap','sliderApp.controllers']);
