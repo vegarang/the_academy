@@ -12,7 +12,6 @@
 
 
 	<context:annotation-config />
-	<context:component-scan base-package="no.uio.inf5750.TheAcademy.Screenshot.dao.impl"></context:component-scan>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
