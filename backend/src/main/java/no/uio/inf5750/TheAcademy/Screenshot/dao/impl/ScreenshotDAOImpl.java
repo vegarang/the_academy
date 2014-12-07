@@ -22,6 +22,7 @@ import no.uio.inf5750.TheAcademy.Screenshot.models.impl.ScreenshotImpl;
  * @author matsasc 	
  *
  */
+@Transactional
 public class ScreenshotDAOImpl implements ScreenshotDAO {
 	SessionFactory sessionFactory;
 	String screenshotLocation;
