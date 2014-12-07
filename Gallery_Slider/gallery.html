@@ -111,6 +111,32 @@
     <hr>
     <h1>Screenshot Gallery</h1>
 
+     <div>
+        <ul class="position">
+            <b>Search:</b><input ng-model="query">
+            <b>Sort by:</b><select ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="-age">Oldest</option>
+
+        </select>
+        </ul>
+
+    <!--<ul class="position">-->
+    <div class="position" style="margin-left: 5%">
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <label for="search">Search: </label>
+                <input ng-model="query" id="search" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="sort_by">Sort by: </label>
+                <select ng-model="orderProp" id="sort_by" class="form-control">
+                    <option value="name">Alphabetical</option>
+                    <option value="-age">Oldest</option>
+                </select>
+            </div>
+        </form>
+
     <div>
         <ul class="position">
             <b>Search:</b><input ng-model="query">
