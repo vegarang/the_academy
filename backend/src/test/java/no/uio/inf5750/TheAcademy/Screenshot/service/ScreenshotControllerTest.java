@@ -36,8 +36,8 @@ public class ScreenshotControllerTest {
 		
 		String ret = service.addScreenshot(resource);
 		System.err.println(ret);
-		ScreenshotResource screenshotResourceRet = service.getScreenshot(ret);
-		System.err.println(screenshotResourceRet.toString());
+//		ScreenshotResource screenshotResourceRet = service.getScreenshot(ret);
+//		System.err.println(screenshotResourceRet.toString());
 		
 	}
 

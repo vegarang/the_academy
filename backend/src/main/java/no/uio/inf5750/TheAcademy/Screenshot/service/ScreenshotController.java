@@ -3,6 +3,8 @@ package no.uio.inf5750.TheAcademy.Screenshot.service;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import no.uio.inf5750.TheAcademy.Screenshot.dao.ImageSaver;
 import no.uio.inf5750.TheAcademy.Screenshot.dao.impl.ScreenshotDAOImpl;
 import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ScreenshotController {
-	@Autowired
+	@Resource(name="screenshotDAO")
 	ScreenshotDAOImpl dao;
 	@RequestMapping(value="/api/Screenshot/", method = RequestMethod.POST)
 	public String addScreenshot(@RequestBody ScreenshotResource resource){
