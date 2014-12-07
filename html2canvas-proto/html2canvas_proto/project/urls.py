@@ -5,8 +5,9 @@ from html2canvas_proto.html2canvas_proto_ui import views
 
 
 router = routers.SimpleRouter(trailing_slash=False)
-router.register(r'images', api.CanvasTestViewSet)
-router.register(r'image_text', api.CanvasAsStringViewSet, base_name="image_text")
+router.register(r'api/images', api.CanvasTestViewSet)
+router.register(r'api/image_text', api.CanvasAsStringViewSet, base_name="image_text")
+router.register(r'api/me', api.SimpleUserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
