@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:beans.xml" })
 @Transactional
-public class ScreenshotTest {
+public class ScreenshotControllerTest {
 	
 	@Autowired
 	ApplicationContext context;
@@ -26,7 +26,6 @@ public class ScreenshotTest {
 	public void setUp(){
 		service = (ScreenshotController) context.getBean("screenshot");
 	}
-	@Ignore
 	@Test
 	public void test() {
 		String image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAAA3NCSVQICAjb4U/gAAAAGXRFWHRTb2Z0d2FyZQBnbm9tZS1zY3JlZW5zaG907wO/PgAAABVJREFUCJljfPfuHQNuwIRHbnBLAwBejALYn/dMKwAAAABJRU5ErkJggg==";
@@ -37,8 +36,8 @@ public class ScreenshotTest {
 		
 		String ret = service.addScreenshot(resource);
 		System.err.println(ret);
-		ScreenshotResource screenshotResourceRet = service.getScreenshot(ret);
-		System.err.println(screenshotResourceRet.toString());
+//		ScreenshotResource screenshotResourceRet = service.getScreenshot(ret);
+//		System.err.println(screenshotResourceRet.toString());
 		
 	}
 
