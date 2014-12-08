@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67d60973-be24-4afc-8ebf-49bc48fff3ab" name="Default" comment="">
+    <list default="true" id="67d60973-be24-4afc-8ebf-49bc48fff3ab" name="Default" comment="Fixed navbar bug">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html2canvas_proto/html2canvas_proto_ui/templates/html2canvas_proto_ui/gallery.html" afterPath="$PROJECT_DIR$/html2canvas_proto/html2canvas_proto_ui/templates/html2canvas_proto_ui/gallery.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -102,10 +102,11 @@
           <file leaf-file-name="gallery.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/html2canvas_proto/html2canvas_proto_ui/templates/html2canvas_proto_ui/gallery.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.1884058" vertical-offset="1508" max-vertical-offset="2379">
-                  <caret line="125" column="33" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+                <state vertical-scroll-proportion="0.1626409" vertical-offset="185" max-vertical-offset="1521">
+                  <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -754,7 +755,13 @@
       <option name="project" value="LOCAL" />
       <updated>1418065248112</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed navbar bug">
+      <created>1418066268590</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1418066268590</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -802,7 +809,8 @@
     <MESSAGE value="Working html/javascript to save screenshot on django-testserver!&#10;&#10;New stuff: modal popup where user enters description and title for a screenshot while the screenshot is being generated in the background.. Also asks server for current users username through '/api/me'" />
     <MESSAGE value="Added changing button, to give user feedback when creating a screenshot succeeds/fails" />
     <MESSAGE value="Updated verification.." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated verification.." />
+    <MESSAGE value="Fixed navbar bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed navbar bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1200,10 +1208,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html2canvas_proto/html2canvas_proto_ui/templates/html2canvas_proto_ui/gallery.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1884058" vertical-offset="1508" max-vertical-offset="2379">
-          <caret line="125" column="33" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.1626409" vertical-offset="185" max-vertical-offset="1521">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

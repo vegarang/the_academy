@@ -18,83 +18,32 @@
 
     <style type="text/css">
 
-
-        .imgbox {
-            display: inline-block;
-            margin-right: 40px;
-            margin-bottom: 50px;
-            left: 152px;
+        .imageelement {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 80%;
         }
 
         .img {
-            border: 3px solid black;
-            height: 200px;
-            width: 200px;
-        }
-
-        ul.gallery li {
-            display: inline-block;
-            float: left;
-            padding: 5px 5px 10px 10px border : 1 px solid #fff;
-            -moz-box-shadow: 0px 2px 15px #333;
-            position: relative;
-            bottom: -20px;
-            margin-right: 5%;
-            margin-bottom: 2%;
-            left: 152px;
-        }
-
-        ul.position li {
-            height: 200px;
-            width: 200px;
-            margin: 0 auto;
-            color: white;
-            text-align: center;
-        }
-
-        h1 {
-            color: black;
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-
-        }
-
-        h4 {
-            color: white;
-        }
-
-        b {
-            color: white;
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
+            height:80%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
         }
 
         img:hover {
-            outline: 3px solid white;
-        }
-
-        hr {
-            display: block;
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-            margin-left: auto;
-            margin-right: auto;
-            border-style: inset;
-            border-width: 1px;
-            background-color: white;
+            outline: 3px solid #428bca;
         }
 
         .form-control {
-
             font-style: italic;
-
         }
 
     </style>
 </head>
 <body ng-controller="SliderController" ng-init="load_images()">
 {% verbatim body %}
-
     <script type="text/ng-template" id="imageslide.html">
         <div class="modal-header">
             <h3 class="modal-title">{{ images[cur_index].title}}</h3>
@@ -104,14 +53,6 @@
             <img ng-src="{{ images[cur_index].image}}" alt="{{ images[cur_index].title}}" width=100%>
 
             <p>{{ images[cur_index].description}}</p>
-
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <p> {{ images.src }} </p>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-small" ng-click="previous()">Previous</button>
@@ -132,43 +73,36 @@
             <div class="navbar-brand" href="#">Screenshot Gallery</div>
         </div>
 
-        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort
-                        by <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li ng-model="orderProp" id="sort_by">
-                        <li><a href="#">Alphabetical</a></li>
-                        <li><a href="#">Newest</a></li>
-                    </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort by <span class="caret"></span></a>
                 </li>
             </ul>
 
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" ng-model="galleryquery">
                 </div>
             </form>
-
         </div>
     </nav>
 
+    <div class="container-fluid" style="margin-top:60px">
+        <div class="row">
+            <div class="col-">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 well" style="margin-left: 1%; margin-right: 1%;margin-bottom:3%" ng-repeat="image in images | filter: {title: galleryquery}">
+                    <h3>{{ image.title }}</h3>
+                    <hr />
+                    <div class="imageelement">
+                        <a ng-click="open(image,$index)"><img class="img" ng-src="{{ image.image }}" alt="{{ image.title }}"></a>
+                    </div>
 
-    <div class="row" style="margin-top:60px">
-        <ul class="gallery">
-            <li class="well" ng-repeat="image in images track by $index | filter: orderBy: orderProp">
-
-                <a ng-click="open(image,$index)"><img class="img" ng-src="{{ image.image }}"
-                                                      alt="{{ image.title }}"></a>
-
-                <p class="whitefont">{{ image.title }}</p>
-
-                <p class="whitefont">Username:{{ image.username }}</p>
-
-                <p class="whitefont">Date: {{ image.date }}</p>
-            </li>
-        </ul>
+                    <p>Username: {{ image.username }}</p>
+                    <p>Date: {{ image.date }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endverbatim body %}
 </body>
