@@ -1,6 +1,6 @@
 angular.module('html2canvas_proto.controllers', [])
 
-.controller('TestCtrl', function($scope, $location, $modal, ImageAsTextFactory, UserFactory) {
+    .controller('TestCtrl', function($scope, $location, $modal, ImageAsTextFactory, UserFactory) {
 
         $scope.store_image = function() {
             $scope.reset_data();
@@ -80,7 +80,7 @@ angular.module('html2canvas_proto.controllers', [])
         }
     })
 
-.controller('TitleDescriptionModalCtrl', function($scope, $modalInstance) {
+    .controller('TitleDescriptionModalCtrl', function($scope, $modalInstance) {
         $scope.image_meta = {
             title: "",
             description: ""
@@ -95,5 +95,61 @@ angular.module('html2canvas_proto.controllers', [])
 
         $scope.cancel = function() {
             $modalInstance.dismiss('user clicked cancel..');
+        };
+    })
+
+    .controller('SliderController', function ($scope, $modal, ImageFactory) {
+
+        $scope.open = function (image, index) {
+
+            $modal.open({
+                templateUrl: 'imageslide.html',
+                controller: 'ImgCtrl',
+                size: 'lg',
+                resolve: {
+                    data: function () {
+                        return {images: $scope.images, index: index};
+                    }
+                }
+            }).result.then(function () {
+                    console.log("modal closed..");
+                }, function () {
+                    console.log("modal dismissed");
+                });
+        };
+
+        $scope.load_images = function() {
+            ImageFactory.query(function(response_data) {
+               $scope.images = response_data;
+            }, function(error_data) {
+                console.log("Failed to get images from server!");
+                console.log(error_data);
+            });
+        };
+
+        $scope.orderProp = 'age';
+    })
+
+    .controller('ImgCtrl', function ($scope, $modalInstance, data) {
+
+        $scope.images = data.images;
+        $scope.cur_index = data.index;
+
+        $scope.cancel = function () {
+            $modalInstance.close()
+        };
+
+        $scope.next = function () {
+            $scope.cur_index++;
+            if ($scope.cur_index >= $scope.images.length) {
+                $scope.cur_index = 0;
+            }
+        };
+
+        $scope.previous = function () {
+            $scope.cur_index--;
+            if ($scope.cur_index < 0) {
+                $scope.cur_index = $scope.images.length - 1;
+            }
         };
     });
