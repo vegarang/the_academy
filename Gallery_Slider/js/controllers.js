@@ -22,54 +22,21 @@ angular.module('sliderApp.controllers', [])
         $scope.images = [
             {
                 src: 'img/dv3.png',
-                title: 'Pic 1',
+                title: 'Img 1',
                 description: "Some description here",
                 url: 'www.example.com/north/pole',
                 date: '2014-12-24',
                 username: 'julenissen'
             }, {
                 src: 'img/gis4.png',
-                title: 'Pic 2',
+                title: 'Img 2',
                 description: "description here",
                 url: 'www.example.com/is/it/a/bird?or&a&plane',
                 date: '1950-01-01',
                 username: 'superman'
             }, {
                 src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
+                title: 'Img 3',
                 description: "Other description here",
                 url: 'www.example.com/na/na/na/',
                 date: '2014-01-01',
@@ -79,7 +46,27 @@ angular.module('sliderApp.controllers', [])
 
             , {
                 src: 'img/gis5.png',
-                title: 'Pic 3',
+                title: 'Img 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            }
+
+               
+             , {
+                src: 'img/gis5.png',
+                title: 'Img 3',
+                description: "Other description here",
+                url: 'www.example.com/na/na/na/',
+                date: '2014-01-01',
+                username: 'batman'
+            } 
+
+
+            , {
+                src: 'img/gis5.png',
+                title: 'Img 3',
                 description: "Other description here",
                 url: 'www.example.com/na/na/na/',
                 date: '2014-01-01',
@@ -89,43 +76,17 @@ angular.module('sliderApp.controllers', [])
 
             , {
                 src: 'img/gis5.png',
-                title: 'Pic 3',
+                title: 'Img 3',
                 description: "Other description here",
                 url: 'www.example.com/na/na/na/',
                 date: '2014-01-01',
                 username: 'batman'
             }
 
-
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-
-            , {
-                src: 'img/gis5.png',
-                title: 'Pic 3',
-                description: "Other description here",
-                url: 'www.example.com/na/na/na/',
-                date: '2014-01-01',
-                username: 'batman'
-            }
-
+    
 
         ];
+        $scope.orderProp = 'age';
     })
 
     .controller('ImgCtrl', function ($scope, $modalInstance, data) {

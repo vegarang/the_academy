@@ -2,10 +2,12 @@
 <html ng-app="sliderApp">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
-    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <script src ="/app/bower_components/angular/angular.js"></script>
+    <script src ="/app/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src ="/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link href ="/app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
     <title>Image Gallery</title>
@@ -48,12 +50,15 @@
             width: 200px;
             margin: 0 auto;
             color: white;
-            position: absolute;
+            text-align: center;
         }
 
         h1 {
 
             color: white;
+            text-align: center;
+            font-family:  'Times New Roman', Times, serif;
+
         }
         h4 {
             color:white;
@@ -66,7 +71,26 @@
         }
 
 
+
+        b {
+
+            color: white;
+            text-align: center;
+            font-family:  'Times New Roman', Times, serif;
+
+        }
+
+        .
+
+      /*  .center {
         
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+
+        }*/
+
+
         img:hover {
             outline: 3px solid white;
         }
@@ -85,7 +109,9 @@
     </style>
 </head>
 <body>
-<div ng-controller="SliderController">
+
+<div ng-controller ="SliderController">
+
  <script type="text/ng-template" id="imageslide.html">
         <div class="modal-header">
             <h3 class="modal-title">{{images[cur_index].title}}</h3>
@@ -95,6 +121,15 @@
             <img ng-src="{{images[cur_index].src}}" alt="{{images[cur_index].title}}" width=100%>
 
             <p>{{images[cur_index].description}}</p>
+
+            <div class ="row">
+            <div class = "col-xs-6 col-md-3">
+            < a href="#" class = "thumbnail">
+            <p> {{images.src}} </p>
+            <a/>
+            </div>
+
+         </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-small" ng-click="previous()">Previous</button>
@@ -104,17 +139,19 @@
     </script>
 
     <hr>
+    <div class = "center"> 
     <h1>Screenshot Gallery</h1>
+  
 
-    <!--<ul class="position">-->
-    <div class="position" style="margin-left: 5%">
+
+     <div class="position" style="margin-left: 5%">
         <form role="form" class="form-inline">
             <div class="form-group">
-                <label for="search">Search: </label>
+               <b> <label for="search">Search: </label> </b>
                 <input ng-model="query" id="search" class="form-control">
             </div>
             <div class="form-group">
-                <label for="sort_by">Sort by: </label>
+               <b> <label for="sort_by">Sort by: </label> </b>
                 <select ng-model="orderProp" id="sort_by" class="form-control">
                     <option value="name">Alphabetical</option>
                     <option value="-age">Oldest</option>
@@ -123,18 +160,42 @@
         </form>
 
     <ul class="gallery">
-        <li ng-repeat="image in images track by $index">
+        <li ng-repeat="image in images track by $index ">
+
             <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.src}}"alt="{{image.title}}"></a>
             <p>{{image.description}}</p>
             <p>Username:{{image.username}}</p>
             <p>Date: {{image.date}}</p>
 
-            <!--<div class="imgbox"> |filter:query-->
+            <!--<div class="imgbox"> |filter:query
+            | filter:query |orderBy:OrderProp-->
             <!--</div>-->
 
         </li>
+
+
     </ul>
+
+ 
+<!-- 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+
+     <!--    Search: <input ng-model="query">
+        Sort by:
+        <select ng-model="orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Oldest</option>
+        </select>
+
+      </div> -->
+
+
 </div>
+
+
 </body>
 </html>
 
