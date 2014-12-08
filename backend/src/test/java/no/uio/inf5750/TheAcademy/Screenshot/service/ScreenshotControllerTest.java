@@ -32,7 +32,7 @@ public class ScreenshotControllerTest {
 		String user = "test";
 		ScreenshotResource resource =  new ScreenshotResource();
 		resource.setImage(image);
-		resource.setUser(user);
+		resource.setUserName(user);
 		
 		String ret = service.addScreenshot(resource);
 		System.err.println(ret);

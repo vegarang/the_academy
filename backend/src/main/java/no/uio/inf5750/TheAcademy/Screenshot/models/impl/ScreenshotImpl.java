@@ -19,6 +19,9 @@ public class ScreenshotImpl implements Screenshot {
 		this.url = url;
 		taken = new Date();
 	}
+	public ScreenshotImpl(){
+		
+	}
 	public void setId(Integer id){
 		this.id = id;
 	}
