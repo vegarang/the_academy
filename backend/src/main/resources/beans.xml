@@ -33,9 +33,9 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop> -->
-				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
 			</props>
 		</property>
 
@@ -43,16 +43,16 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 
-		<property name="driverClass" value="org.h2.Driver" />
-		<property name="jdbcUrl" value="jdbc:h2:mem:inf5750;DB_CLOSE_ON_EXIT=FALSE" />
-		<property name="user" value="sa" />
-		<property name="password" value="" />
+		<!-- <property name="driverClass" value="org.h2.Driver" /> <property name="jdbcUrl" 
+			value="jdbc:h2:mem:inf5750;DB_CLOSE_ON_EXIT=FALSE" /> <property name="user" 
+			value="sa" /> <property name="password" value="" /> -->
 
 		<!-- The postgres configuration is commented out. Left here as a hint for 
 			future assignments -->
-		<!-- <property name="driverClass" value="org.postgresql.Driver"/> <property 
-			name="jdbcUrl" value="jdbc:postgresql:product"/> <property name="user" value="sa"/> 
-			<property name="password" value="sa"/> -->
+		<property name="driverClass" value="org.postgresql.Driver" />
+		<property name="jdbcUrl" value="jdbc:postgresql:screenshot" />
+		<property name="user" value="dhis" />
+		<property name="password" value="dhis" />
 	</bean>
 	<bean id="screenshotDAO"
 		class="no.uio.inf5750.TheAcademy.Screenshot.dao.impl.ScreenshotDAOImpl">
