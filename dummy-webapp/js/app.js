@@ -4,6 +4,6 @@ angular.module('screenshot', ['ngResource', 'ui.bootstrap', 'screenshot.controll
         return $resource('/screenshot/api/Screenshot/:id/', {id:'@id'});
     })
     .factory('UserFactory', function($resource) {
-        return $resource('/api/me/');
+        return $resource('/dhis/api/me/');
     });
 
