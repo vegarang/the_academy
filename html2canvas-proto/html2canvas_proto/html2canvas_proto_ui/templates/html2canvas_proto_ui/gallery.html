@@ -1,199 +1,177 @@
-                <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-                <html ng-app="html2canvas_proto">
-                <head>
-                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="html2canvas_proto">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-                    {% load static %}
-                    <link rel="stylesheet" href="{%static "html2canvas_proto_ui/lib/bootstrap-3.2.0-dist/css/bootstrap.min.css"%}">
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/html2canvas.js" %}"></script>
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular.min.js"%}"></script>
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular-resource.min.js"%}"></script>
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"%}"></script>
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js"%}"></script>
-                    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js"%}"></script>
-                    <title>Image Gallery</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "html2canvas_proto_ui/lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" %}">
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/html2canvas.js" %}"></script>
+    <script type="application/javascript"
+            src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular.min.js" %}"></script>
+    <script type="application/javascript"
+            src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular-resource.min.js" %}"></script>
+    <script type="application/javascript"
+            src="{% static "html2canvas_proto_ui/lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" %}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js" %}"></script>
+    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js" %}"></script>
+    <title>Image Gallery</title>
 
-                    <style type="text/css">
-                 
-
-                    .imgbox {
-                        display: inline-block;
-                        margin-right: 40px;
-                        margin-bottom: 50px;
-                        left: 152px;
-                    }
-
-                    .img {
-                        border: 3px solid black;
-                        height: 200px;
-                        width: 200px;
-                    }
-
-                    ul.gallery li {
-                        display: inline-block;
-                        float: left;
-                        padding: 5px 5px 10px 10px border : 1 px solid #fff;
-                        -moz-box-shadow: 0px 2px 15px #333;
-                        position: relative;
-                        bottom: -20px;
-                        margin-right: 5%;
-                        margin-bottom: 2%;
-                        left: 152px;
-                    }
-
-                    ul.position li {
-                        height: 200px;
-                        width: 200px;
-                        margin: 0 auto;
-                        color: white;
-                        text-align: center;
-                    }
-
-                    h1 {
-                        color: black;
-                        text-align: center;
-                        font-family:  'Times New Roman', Times, serif;
+    <style type="text/css">
 
 
-                    }
-                    h4 {
-                        color:white;
-                    }
+        .imgbox {
+            display: inline-block;
+            margin-right: 40px;
+            margin-bottom: 50px;
+            left: 152px;
+        }
 
-                    b {
-                        color: white;
-                        text-align: center;
-                        font-family:  'Times New Roman', Times, serif;
-                    }
+        .img {
+            border: 3px solid black;
+            height: 200px;
+            width: 200px;
+        }
 
-                    img:hover {
-                        outline: 3px solid white;
-                    }
+        ul.gallery li {
+            display: inline-block;
+            float: left;
+            padding: 5px 5px 10px 10px border : 1 px solid #fff;
+            -moz-box-shadow: 0px 2px 15px #333;
+            position: relative;
+            bottom: -20px;
+            margin-right: 5%;
+            margin-bottom: 2%;
+            left: 152px;
+        }
 
-                    hr {
-                        display: block;
-                        margin-top: 0.5em;
-                        margin-bottom: 0.5em;
-                        margin-left: auto;
-                        margin-right: auto;
-                        border-style: inset;
-                        border-width: 1px;
-                        background-color: white;
-                    }
+        ul.position li {
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+        }
 
-            
-                    .form-control {
+        h1 {
+            color: black;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
 
-                        font-style: italic;
-                     
-                    }
+        }
 
-                    .navbar-brand {
-                       
-                        
-                    }
+        h4 {
+            color: white;
+        }
 
-                    .dropdown-toggle {
-                        
-                       
-                    }
+        b {
+            color: white;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
 
-                    .nav navbar-nav {
-                   
+        img:hover {
+            outline: 3px solid white;
+        }
 
-                    }
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: inset;
+            border-width: 1px;
+            background-color: white;
+        }
 
+        .form-control {
 
-                </style>
-                </head>
-                <body ng-controller="SliderController" ng-init="load_images()">
-                    {% verbatim body %}
+            font-style: italic;
 
-                    <script type="text/ng-template" id="imageslide.html">
-                    <div class="modal-header">
-                    <h3 class="modal-title">{{images[cur_index].title}}</h3>
-                    <small>{{images[cur_index].username}} - {{images[cur_index].date}} - {{images[cur_index].url}}</small>
-                    </div>
-                    <div class="modal-body">
-                    <img ng-src="{{images[cur_index].image}}" alt="{{images[cur_index].title}}" width=100%>
+        }
 
-                    <p>{{images[cur_index].description}}</p>
+    </style>
+</head>
+<body ng-controller="SliderController" ng-init="load_images()">
+{% verbatim body %}
 
-                    <div class ="row">
-                    <div class = "col-xs-6 col-md-3">
-                    <a href="#" class = "thumbnail">
-                    <p> {{images.src}} </p>
+    <script type="text/ng-template" id="imageslide.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ images[cur_index].title}}</h3>
+            <small>{{ images[cur_index].username}} - {{ images[cur_index].date}} - {{ images[cur_index].url}}</small>
+        </div>
+        <div class="modal-body">
+            <img ng-src="{{ images[cur_index].image}}" alt="{{ images[cur_index].title}}" width=100%>
+
+            <p>{{ images[cur_index].description}}</p>
+
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <p> {{ images.src }} </p>
                     </a>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button class="btn btn-small" ng-click="previous()">Previous</button>
-                    <button class="btn btn-small" ng-click="next()">Next</button>
-                    <button class="btn btn-warning" ng-click="cancel()">Close</button>
-                    </div>
-                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-small" ng-click="previous()">Previous</button>
+            <button class="btn btn-small" ng-click="next()">Next</button>
+            <button class="btn btn-warning" ng-click="cancel()">Close</button>
+        </div>
+    </script>
 
-                  
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand" href="#">Screenshot Gallery</div>
+        </div>
 
-                    <nav class="navbar navbar-default navbar-fixed-top"  role="navigation" >
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort
+                        by <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-model="orderProp" id="sort_by">
+                        <li><a href="#">Alphabetical</a></li>
+                        <li><a href="#">Newest</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                              <ul class="nav navbar-nav">
-                                <li class ="navbar-brand"<h1>Screenshot Gallery</h1></li>
-                               <!--  <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort by <span class="caret"></span></a>
-                                  <ul class="dropdown-menu" role="menu">
-                                     <select ng-model="orderProp" id="sort_by" class="form-control">
-                                        <li><a href="#">Alphabetical</a></li>
-                                        <li><a href="#">Neweest</a></li>
-                                    </select>
-                                </ul>
-                            </li>
-                        </ul> -->
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort by <span class="caret"></span></a>
-                          <ul class="dropdown-menu" role="menu">
-                             <li ng-model="orderProp" id="sort_by">
-                            <li><a href="#">Alphabetical</a></li>
-                            <li><a href="#">Newest</a></li>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                  </div>
-              </form>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
 
-          </div>
-      </div>
-    </nav> 
+        </div>
+    </nav>
 
 
-    <div class = "row" style ="margin-top:60px">
-    <ul class="gallery">
-        <li class= "well" ng-repeat="image in images track by $index | filter: orderBy: orderProp">
+    <div class="row" style="margin-top:60px">
+        <ul class="gallery">
+            <li class="well" ng-repeat="image in images track by $index | filter: orderBy: orderProp">
 
-            <a ng-click="open(image,$index)"><img class="img" ng-src="{{image.image}}" alt="{{image.title}}"></a>
-            <p class="whitefont">{{image.title}}</p>
-            <p class="whitefont">Username:{{image.username}}</p>
-            <p class="whitefont">Date: {{image.date}}</p>
-        </li>
-    </ul>
+                <a ng-click="open(image,$index)"><img class="img" ng-src="{{ image.image }}"
+                                                      alt="{{ image.title }}"></a>
+
+                <p class="whitefont">{{ image.title }}</p>
+
+                <p class="whitefont">Username:{{ image.username }}</p>
+
+                <p class="whitefont">Date: {{ image.date }}</p>
+            </li>
+        </ul>
     </div>
-    {% endverbatim body %}
-    </body>
-    </html>
+{% endverbatim body %}
+</body>
+</html>
 
 
