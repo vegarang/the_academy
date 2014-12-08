@@ -42,19 +42,26 @@ angular.module('html2canvas_proto.controllers', [])
             if (!$scope.btn.active) {
                 return;
             }
-            $scope.reset_btn();
-            $scope.set_in_progress();
+
             $scope.reset_data();
+            $scope.set_in_progress();
 
             html2canvas(document.body, {
                 onrendered: function(canvas) {
                     $scope.image.image = canvas.toDataURL("image/png");
-                    $scope.data_check();
+                    $scope.data_check('html2canvas');
                 }
             });
         };
 
         $scope.reset_data = function() {
+            $scope.reset_btn();
+            $scope.status = {
+                modal: false,
+                html2canvas: false,
+                user: false
+            };
+
             $scope.image = {
                 image: null,
                 title: null,
@@ -65,7 +72,7 @@ angular.module('html2canvas_proto.controllers', [])
 
             UserFactory.get(function(result) {
                 $scope.image.username = result.username;
-                $scope.data_check();
+                $scope.data_check('user');
             }, function(error) {
                 console.log("Failed to get userdata!");
                 console.log(error);
@@ -82,9 +89,7 @@ angular.module('html2canvas_proto.controllers', [])
                         console.log(image_meta);
                         $scope.image.title = image_meta.title;
                         $scope.image.description = image_meta.description;
-                        if (!$scope.data_check()){
-                            $scope.set_error();
-                        }
+                        $scope.data_check('modal');
                 }, function() {
                     console.log("User dismissed image_meta modal..");
                     $scope.reset_btn();
@@ -95,20 +100,36 @@ angular.module('html2canvas_proto.controllers', [])
             return new Array(num);
         };
 
-        $scope.data_check = function() {
+        $scope.data_check = function(mode) {
             var check_val = function(val) {
                 return val != null && val != undefined && val != '';
             };
 
-            if (check_val($scope.image.image) &&
-                    check_val($scope.image.title) &&
-                    check_val($scope.image.description) &&
-                    check_val($scope.image.url) &&
-                    check_val($scope.image.username)) {
-                $scope.send_to_server();
-                return true;
+            if (mode == 'modal') {
+                if (!check_val($scope.image.title) ||
+                    !check_val($scope.image.description)) {
+                    $scope.set_error();
+                } else {
+                    $scope.status.modal = true;
+                }
+            } else if (mode == 'html2canvas'){
+                if (!check_val($scope.image.image) ||
+                    !check_val($scope.image.url)) {
+                    $scope.set_error();
+                } else {
+                    $scope.status.html2canvas = true;
+                }
+            } else if (mode == 'user') {
+                if (!check_val($scope.image.username)) {
+                    $scope.set_error();
+                } else {
+                    $scope.status.user = true;
+                }
             }
-            return false;
+
+            if ($scope.status.modal && $scope.status.html2canvas && scope.status.user) {
+                $scope.send_to_server();
+            }
         };
 
         $scope.send_to_server = function() {
