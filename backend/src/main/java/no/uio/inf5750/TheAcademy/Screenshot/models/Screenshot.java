@@ -68,4 +68,5 @@ public interface Screenshot {
 	public Integer getId();
 
 	public void setId(Integer id);
+	public void setTitle(String title);
 }
