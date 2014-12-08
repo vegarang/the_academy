@@ -52,6 +52,7 @@ angular.module('html2canvas_proto.controllers', [])
                     $scope.data_check('html2canvas');
                 }
             });
+            
         };
 
         $scope.reset_data = function() {
