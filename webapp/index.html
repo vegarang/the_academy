@@ -35,6 +35,11 @@
         .form-control {
             font-style: italic;
         }
+        
+        hr {
+            border-style: inset;
+            border-width: 1px;
+        }
 
     </style>
 </head>
@@ -86,7 +91,7 @@
                     <div class="imageelement">
                         <a ng-click="open(image,$index)"><img class="img" ng-src="screenshot/api/Screenshot/{{ image.id }}" alt="{{ image.title }}"></a>
                     </div>
-
+                    <hr />
                     <p>Username: {{ image.username }}</p>
                     <p>Date: {{ image.date }}</p>
                 </div>
