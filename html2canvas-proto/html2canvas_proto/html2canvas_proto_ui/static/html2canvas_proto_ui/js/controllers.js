@@ -11,6 +11,7 @@ angular.module('html2canvas_proto.controllers', [])
                     $scope.data_check();
                 }
             });
+            
         };
 
         $scope.reset_data = function() {
