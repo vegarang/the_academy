@@ -1,8 +1,49 @@
 angular.module('html2canvas_proto.controllers', [])
 
-    .controller('TestCtrl', function($scope, $location, $modal, ImageAsTextFactory, UserFactory) {
+    .controller('TestCtrl', function($scope, $location, $modal, $timeout, ImageAsTextFactory, UserFactory) {
+
+        $scope.reset_btn = function(){
+            $timeout.cancel($scope.timeout);
+            $scope.btn = {
+                title: "Take screenshot",
+                style: "btn btn-primary",
+                active: true
+            };
+        };
+
+        $scope.set_error = function() {
+            $scope.btn = {
+                title: "Screenshot failed!",
+                style: "btn btn-danger",
+                active: true
+            };
+        };
+
+        $scope.set_success = function() {
+            $scope.btn = {
+                title: "Screenshot saved!",
+                style: "btn btn-success",
+                active: false
+            };
+            $scope.timeout = $timeout(function(){
+                $scope.reset_btn();
+            }, 2000);
+        };
+
+        $scope.set_in_progress = function() {
+            $scope.btn = {
+                title: "Storing screenshot",
+                style: "btn btn-primary disabled",
+                active: false
+            }
+        };
 
         $scope.store_image = function() {
+            if (!$scope.btn.active) {
+                return;
+            }
+            $scope.reset_btn();
+            $scope.set_in_progress();
             $scope.reset_data();
 
             html2canvas(document.body, {
@@ -35,17 +76,19 @@ angular.module('html2canvas_proto.controllers', [])
                     templateUrl: 'title_and_description_modal.html',
                     controller: 'TitleDescriptionModalCtrl',
                     size: 'lg'
-                }
-            ).result.then(
-                function(image_meta) {
-                    console.log("Saving data from image_meta modal!");
-                    console.log(image_meta);
-                    $scope.image.title = image_meta.title;
-                    $scope.image.description = image_meta.description;
-                    $scope.data_check();
-            }, function() {
-                console.log("User dismissed image_meta modal..");
-            })
+                }).result.then(
+                    function(image_meta) {
+                        console.log("Saving data from image_meta modal!");
+                        console.log(image_meta);
+                        $scope.image.title = image_meta.title;
+                        $scope.image.description = image_meta.description;
+                        if (!$scope.data_check()){
+                            $scope.set_error();
+                        }
+                }, function() {
+                    console.log("User dismissed image_meta modal..");
+                    $scope.reset_btn();
+                })
         };
 
         $scope.range = function(num) {
@@ -63,21 +106,22 @@ angular.module('html2canvas_proto.controllers', [])
                     check_val($scope.image.url) &&
                     check_val($scope.image.username)) {
                 $scope.send_to_server();
-            } else {
-                console.error("Validation failed!");
-                // TODO: Proper validation!
+                return true;
             }
+            return false;
         };
 
         $scope.send_to_server = function() {
             ImageAsTextFactory.save($scope.image, function(result) {
-                console.log("Saved image!");
+                $scope.set_success();
                 console.log(result);
             }, function(error) {
+                $scope.set_error();
                 console.log("Got error when saving data..");
                 console.log(error);
             })
-        }
+        };
+        $scope.reset_btn();
     })
 
     .controller('TitleDescriptionModalCtrl', function($scope, $modalInstance) {
@@ -87,9 +131,6 @@ angular.module('html2canvas_proto.controllers', [])
         };
 
         $scope.save = function() {
-            console.log("Closing modal!");
-            console.log("Data:");
-            console.log($scope.image_meta);
             $modalInstance.close($scope.image_meta);
         };
 
