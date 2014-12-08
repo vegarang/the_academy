@@ -13,6 +13,7 @@ import no.uio.inf5750.TheAcademy.Screenshot.models.Screenshot;
 import no.uio.inf5750.TheAcademy.Screenshot.models.impl.ScreenshotImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class ScreenshotController {
 			screenshot = new ScreenshotImpl(resource.getUserName(), ImageSaver.saveImage(resource.getUserName(), resource.getImage()), resource.getUrl());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			return "Failed";
+			return "Failed" + e.getLocalizedMessage();
 		}
 		return "Success! Image added with id: " + dao.addScreenshot(screenshot);
 		
@@ -40,15 +41,26 @@ public class ScreenshotController {
 		dao.deleteScreenshot(id);
 		return id + "deleted!";
 	}
-	@RequestMapping(value="/api/Screenshot/{id}", method= RequestMethod.GET)
-	public ScreenshotResource getScreenshot(@PathVariable("id") String id){
-		Screenshot screenshot = dao.getScreenshot(id);
-		ScreenshotResource ret = getMapper(screenshot);
-		return ret;
+	@RequestMapping(value="/api/Screenshot/{id}", method = RequestMethod.PATCH)
+	public ScreenshotResource updateScreenshot(@RequestBody ScreenshotResource req){
+		Screenshot screenshot = dao.getScreenshot(req.getId().toString());
+		updateScreenshot(req, screenshot);
+		dao.updateScreenshot(screenshot);
+		return getMapper(screenshot);
+		
 	}
 		
 	
-	@RequestMapping(value="/api/Screenshot/all/{id}",method= RequestMethod.GET)
+	private void updateScreenshot(ScreenshotResource req, Screenshot screenshot) {
+		if(req.getDescription() != null){
+			screenshot.editComment(req.getDescription());
+		}
+		if(req.getTitle() != null){
+			screenshot.setTitle(req.getTitle());
+		}
+		
+	}
+	@RequestMapping(value="/api/Screenshot/{id}",method= RequestMethod.GET)
 	public List<ScreenshotResource> fun(@PathVariable("id")String request){
 		ArrayList<ScreenshotResource> ret = new ArrayList<ScreenshotResource>();
 		for(Screenshot screen : dao.getScreenshots(request)){
@@ -57,12 +69,15 @@ public class ScreenshotController {
 		return ret;
 	}
 	
-	@RequestMapping(value="api/Screenshot/image/{imageid}" , method = RequestMethod.GET)
+	@RequestMapping(produces = MediaType.IMAGE_PNG_VALUE ,value="api/Screenshot/image/{imageid}" , method = RequestMethod.GET)
 	public byte[] getImage(@PathVariable("imageid") String imageId){
 		Screenshot screenshot = dao.getScreenshot(imageId);
 		try{
-			return ImageSaver.getImage(screenshot.getImageLocation());
+			byte[] ret = ImageSaver.getImage(screenshot.getImageLocation());
+			System.err.println(ret.length);
+			return ret;
 		} catch( IOException e){
+			e.printStackTrace();
 			return e.getMessage().getBytes();
 		}
 	}

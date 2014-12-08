@@ -66,6 +66,9 @@ public class ScreenshotDAOImpl implements ScreenshotDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(screenshot);
 	}
-	
+	public void updateScreenshot(Screenshot screenshot){
+		Session session = sessionFactory.getCurrentSession();
+		session.update(screenshot);
+	}
 
 }
