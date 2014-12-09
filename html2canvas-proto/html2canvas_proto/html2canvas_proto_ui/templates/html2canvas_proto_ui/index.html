@@ -13,7 +13,7 @@
     <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js"%}"></script>
     <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js"%}"></script>
 </head>
-<body ng-controller="TestCtrl">
+<body ng-controller="TestCtrl" ng-init="num_repeat=5;">
     {% verbatim body %}
         <script type="text/ng-template" id="title_and_description_modal.html">
             <div class="modal-header">
