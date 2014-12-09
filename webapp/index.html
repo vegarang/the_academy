@@ -1,20 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app="html2canvas_proto">
+<html ng-app="screenshot">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Screenshot Gallery</title>
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static "html2canvas_proto_ui/lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" %}">
-    <script type="application/javascript" src="{% static "html2canvas_proto_ui/lib/html2canvas.js" %}"></script>
-    <script type="application/javascript"
-            src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular.min.js" %}"></script>
-    <script type="application/javascript"
-            src="{% static "html2canvas_proto_ui/lib/bower_components/angular/angular-resource.min.js" %}"></script>
-    <script type="application/javascript"
-            src="{% static "html2canvas_proto_ui/lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" %}"></script>
-    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js" %}"></script>
-    <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js" %}"></script>
-    <title>Image Gallery</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+    <script type="application/javascript" src="lib/html2canvas.js"></script>
+    <script type="application/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+    <script type="application/javascript" src="lib/bower_components/angular/angular-resource.min.js"></script>
+    <script type="application/javascript" src="lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="application/javascript" src="js/app.js"></script>
+    <script type="application/javascript" src="js/controllers.js"></script>
 
     <style type="text/css">
 
@@ -39,18 +35,22 @@
         .form-control {
             font-style: italic;
         }
+        
+        hr {
+            border-style: inset;
+            border-width: 1px;
+        }
 
     </style>
 </head>
-<body ng-controller="SliderController" ng-init="load_images()">
-{% verbatim body %}
+<body ng-controller="GalleryCtrl" ng-init="load_images()">
     <script type="text/ng-template" id="imageslide.html">
         <div class="modal-header">
             <h3 class="modal-title">{{ images[cur_index].title}}</h3>
             <small>{{ images[cur_index].username}} - {{ images[cur_index].date}} - {{ images[cur_index].url}}</small>
         </div>
         <div class="modal-body">
-            <img ng-src="{{ images[cur_index].image}}" alt="{{ images[cur_index].title}}" width=100%>
+            <img ng-src="screenshot/api/Screenshot/{{ images[cur_index].id}}" alt="{{ images[cur_index].title}}" width=100%>
 
             <p>{{ images[cur_index].description}}</p>
         </div>
@@ -70,16 +70,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand" href="#">Screenshot Gallery</div>
+            <div class="navbar-brand">Screenshot Gallery</div>
         </div>
 
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort by <span class="caret"></span></a>
-                </li>
-            </ul>
-
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search" ng-model="galleryquery">
@@ -95,16 +89,15 @@
                     <h3>{{ image.title }}</h3>
                     <hr />
                     <div class="imageelement">
-                        <a ng-click="open(image,$index)"><img class="img" ng-src="{{ image.image }}" alt="{{ image.title }}"></a>
+                        <a ng-click="open(image,$index)"><img class="img" ng-src="screenshot/api/Screenshot/{{ image.id }}" alt="{{ image.title }}"></a>
                     </div>
-
+                    <hr />
                     <p>Username: {{ image.username }}</p>
                     <p>Date: {{ image.date }}</p>
                 </div>
             </div>
         </div>
     </div>
-{% endverbatim body %}
 </body>
 </html>
 

@@ -42,7 +42,8 @@
             <span><small> - Because everyone needs to test stuff every once in a while, right?</small></span>
         </div>
 
-        <button class="btn btn-primary" ng-click="store_image()">Take screenshot</button>
+        <button class="{{ btn.style }}" ng-click="store_image()">{{ btn.title }}</button>
+
 
         <div class="jumbotron" ng-repeat="i in range(15) track by $index"><h1>WoopWoop</h1><small>I am number {{ $index }}</small></div>
     {% endverbatim body %}

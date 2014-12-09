@@ -1,8 +1,8 @@
-angular.module('html2canvas_proto.controllers', [])
+angular.module('screenshot.controllers', [])
 
-    .controller('TestCtrl', function($scope, $location, $modal, $timeout, ImageAsTextFactory, UserFactory) {
+    .controller('ScreenshotCtrl', function($scope, $location, $modal, $timeout, ImageFactory, UserFactory) {
 
-        $scope.reset_btn = function(){
+        $scope.reset_btn = function() {
             $timeout.cancel($scope.timeout);
             $scope.btn = {
                 title: "Take screenshot",
@@ -52,7 +52,6 @@ angular.module('html2canvas_proto.controllers', [])
                     $scope.data_check('html2canvas');
                 }
             });
-            
         };
 
         $scope.reset_data = function() {
@@ -77,6 +76,7 @@ angular.module('html2canvas_proto.controllers', [])
             }, function(error) {
                 console.log("Failed to get userdata!");
                 console.log(error);
+                $scope.set_error();
             });
 
             $modal.open(
@@ -128,13 +128,13 @@ angular.module('html2canvas_proto.controllers', [])
                 }
             }
 
-            if ($scope.status.modal && $scope.status.html2canvas && scope.status.user) {
+            if ($scope.status.modal && $scope.status.html2canvas && $scope.status.user) {
                 $scope.send_to_server();
             }
         };
 
         $scope.send_to_server = function() {
-            ImageAsTextFactory.save($scope.image, function(result) {
+            ImageFactory.save($scope.image, function(result) {
                 $scope.set_success();
                 console.log(result);
             }, function(error) {
@@ -161,13 +161,12 @@ angular.module('html2canvas_proto.controllers', [])
         };
     })
 
-    .controller('SliderController', function ($scope, $modal, ImageFactory) {
+    .controller('GalleryCtrl', function ($scope, $modal, ImageFactory, UserFactory) {
 
         $scope.open = function (image, index) {
-
             $modal.open({
                 templateUrl: 'imageslide.html',
-                controller: 'ImgCtrl',
+                controller: 'ImageModalCtrl',
                 size: 'lg',
                 resolve: {
                     data: function () {
@@ -182,18 +181,24 @@ angular.module('html2canvas_proto.controllers', [])
         };
 
         $scope.load_images = function() {
-            ImageFactory.query(function(response_data) {
-               $scope.images = response_data;
-            }, function(error_data) {
-                console.log("Failed to get images from server!");
-                console.log(error_data);
+            UserFactory.get(function(result) {
+                $scope.username = result.username;
+                ImageFactory.query(function(response_data) {
+                    $scope.images = response_data;
+                }, function(error_data) {
+                    console.log("Failed to get images from server!");
+                    console.log(error_data);
+                });
+            }, function(error) {
+                console.log("Failed to get userdata!");
+                console.log(error);
             });
         };
 
         $scope.orderProp = 'age';
     })
 
-    .controller('ImgCtrl', function ($scope, $modalInstance, data) {
+    .controller('ImageModalCtrl', function ($scope, $modalInstance, data) {
 
         $scope.images = data.images;
         $scope.cur_index = data.index;
