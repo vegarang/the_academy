@@ -192,7 +192,7 @@ angular.module('screenshot.controllers', [])
         $scope.load_images = function() {
             UserFactory.get(function(result) {
                 $scope.username = result.userCredentials.username;
-                ImageFactory.all({username: $scope.username}, function(response_data) {
+                ImageFactory.query({username: $scope.username}, function(response_data) {
                     $scope.images = response_data;
                 }, function(error_data) {
                     console.log("Failed to get images from server!");
