@@ -71,7 +71,7 @@ angular.module('screenshot.controllers', [])
             };
 
             UserFactory.get(function(result) {
-                $scope.image.username = result.username;
+                $scope.image.username = result.userCredentials.username;
                 $scope.data_check('user');
             }, function(error) {
                 console.log("Failed to get userdata!");
@@ -109,28 +109,37 @@ angular.module('screenshot.controllers', [])
             if (mode == 'modal') {
                 if (!check_val($scope.image.title) ||
                     !check_val($scope.image.description)) {
+                    console.log('mode is modal, image title or description is not valid!');
                     $scope.set_error();
                 } else {
+                    console.log('mode is modal, data valid');
                     $scope.status.modal = true;
                 }
             } else if (mode == 'html2canvas'){
                 if (!check_val($scope.image.image) ||
                     !check_val($scope.image.url)) {
+                    console.log('mode is html2canvas, image or url is not valid');
                     $scope.set_error();
                 } else {
+                    console.log('mode is html2canvas, data valid');
                     $scope.status.html2canvas = true;
                 }
             } else if (mode == 'user') {
                 if (!check_val($scope.image.username)) {
+                    console.log('mode is user, username not valid!');
                     $scope.set_error();
                 } else {
+                    console.log('mode is user, data valid');
                     $scope.status.user = true;
                 }
             }
 
             if ($scope.status.modal && $scope.status.html2canvas && $scope.status.user) {
+                console.log('run send_to_server!');
                 $scope.send_to_server();
+                return;
             }
+            console.log('data_check failed..')
         };
 
         $scope.send_to_server = function() {
@@ -182,7 +191,7 @@ angular.module('screenshot.controllers', [])
 
         $scope.load_images = function() {
             UserFactory.get(function(result) {
-                $scope.username = result.username;
+                $scope.username = result.userCredentials.username;
                 ImageFactory.all({username: $scope.username}, function(response_data) {
                     $scope.images = response_data;
                 }, function(error_data) {
