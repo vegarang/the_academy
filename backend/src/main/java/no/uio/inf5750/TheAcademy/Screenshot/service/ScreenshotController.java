@@ -63,7 +63,8 @@ public class ScreenshotController {
 	@RequestMapping(value="/api/Screenshot/{id}",method= RequestMethod.GET)
 	public List<ScreenshotResource> fun(@PathVariable("id")String request){
 		ArrayList<ScreenshotResource> ret = new ArrayList<ScreenshotResource>();
-		for(Screenshot screen : dao.getScreenshots(request)){
+		List<ScreenshotImpl> screens = dao.getScreenshots(request);
+		for(Screenshot screen : screens){
 			ret.add(getMapper(screen));
 		}
 		return ret;

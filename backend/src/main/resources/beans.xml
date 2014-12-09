@@ -50,7 +50,7 @@
 		<!-- The postgres configuration is commented out. Left here as a hint for 
 			future assignments -->
 		<property name="driverClass" value="org.postgresql.Driver" />
-		<property name="jdbcUrl" value="jdbc:postgresql:dhis2" />
+		<property name="jdbcUrl" value="jdbc:postgresql:screenshot" />
 		<property name="user" value="dhis" />
 		<property name="password" value="dhis" />
 	</bean>
