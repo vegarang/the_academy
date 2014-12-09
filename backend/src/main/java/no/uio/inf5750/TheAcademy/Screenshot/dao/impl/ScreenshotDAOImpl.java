@@ -54,7 +54,8 @@ public class ScreenshotDAOImpl implements ScreenshotDAO {
 	public List<ScreenshotImpl> getScreenshots(String userId) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(ScreenshotImpl.class);
-		criteria.add(Restrictions.eq("user", userId));
+		criteria.add(Restrictions.eq("usercd", userId));
+		session.getTransaction().commit();
 		return criteria.list();
 	}
 

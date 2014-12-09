@@ -27,10 +27,11 @@ public class ScreenshotResource {
 	public String getImageUrl(){
 		return imageurl;
 	}
-	public void setUserName(String id){
+	public void setUsername(String id){
+		System.err.println(id);
 		username = id;
 	}
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
 	public void setTitle(String title){

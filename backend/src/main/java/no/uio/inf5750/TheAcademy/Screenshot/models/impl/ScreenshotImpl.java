@@ -18,6 +18,7 @@ public class ScreenshotImpl implements Screenshot {
 		this.fileLocation = filelocation;
 		this.url = url;
 		taken = new Date();
+		System.err.println(userId);
 	}
 	public ScreenshotImpl(){
 		
