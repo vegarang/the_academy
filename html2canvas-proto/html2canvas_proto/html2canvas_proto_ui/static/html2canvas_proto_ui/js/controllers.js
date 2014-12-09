@@ -128,7 +128,7 @@ angular.module('html2canvas_proto.controllers', [])
                 }
             }
 
-            if ($scope.status.modal && $scope.status.html2canvas && scope.status.user) {
+            if ($scope.status.modal && $scope.status.html2canvas && $scope.status.user) {
                 $scope.send_to_server();
             }
         };

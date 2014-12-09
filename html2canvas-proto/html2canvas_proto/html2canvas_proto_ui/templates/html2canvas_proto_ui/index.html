@@ -13,7 +13,7 @@
     <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/app.js"%}"></script>
     <script type="application/javascript" src="{% static "html2canvas_proto_ui/js/controllers.js"%}"></script>
 </head>
-<body ng-controller="TestCtrl" ng-init="num_repeat=5;">
+<body ng-controller="TestCtrl">
     {% verbatim body %}
         <script type="text/ng-template" id="title_and_description_modal.html">
             <div class="modal-header">
@@ -38,14 +38,18 @@
         </script>
 
         <div class="jumbotron">
-            <h1>Some testypage</h1>
+            <h1>This is just a test..</h1>
             <span><small> - Because everyone needs to test stuff every once in a while, right?</small></span>
         </div>
 
         <button class="{{ btn.style }}" ng-click="store_image()">{{ btn.title }}</button>
 
-
-        <div class="jumbotron" ng-repeat="i in range(15) track by $index"><h1>WoopWoop</h1><small>I am number {{ $index }}</small></div>
+        <div ng-init="num_repeat=1;text_class='text-primary'">
+            <div class="jumbotron" ng-repeat="i in range(num_repeat) track by $index">
+                <h1>WoopWoop</h1>
+                <small class="{{ text_class }}">I am number {{ $index }}</small>
+            </div>
+        </div>
     {% endverbatim body %}
 </body>
 </html>
