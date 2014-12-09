@@ -84,7 +84,7 @@ public class ScreenshotController {
 	private ScreenshotResource getMapper(Screenshot screen){
 		ScreenshotResource ret = new ScreenshotResource();
 		ret.setCreated(screen.getCreated());
-		ret.setUserName(screen.getUserId());
+		ret.setUsername(screen.getUserId());
 		ret.setImage("api/Screenshot/image/" + screen.getId());
 		if(screen.getComment() != null){
 			ret.setDescription(screen.getComment());
