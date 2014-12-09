@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScreenshotController {
 	@Resource(name="screenshotDAO")
 	ScreenshotDAO dao;
-	@RequestMapping(value="/api/Screenshot/", method = RequestMethod.POST)
+	@RequestMapping(value="/api/Screenshot", method = RequestMethod.POST)
 	public String addScreenshot(@RequestBody ScreenshotResource resource){
 		Screenshot screenshot;
 		try {
-			screenshot = new ScreenshotImpl(resource.getUserName(), ImageSaver.saveImage(resource.getUserName(), resource.getImage()), resource.getUrl());
+			screenshot = new ScreenshotImpl(resource.getUsername(), ImageSaver.saveImage(resource.getUsername(), resource.getImage()), resource.getUrl());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			return "Failed" + e.getLocalizedMessage();
